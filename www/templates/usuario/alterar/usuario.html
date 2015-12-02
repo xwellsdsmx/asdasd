@@ -1,0 +1,13 @@
+<div class="list">
+  <label class="item item-input item-stacked-label">
+    <strong class="input-label">Nome</strong>
+    <input type="text" ng-model="usuarioE.nome" required>
+  </label>
+  <label class="item item-input item-stacked-label">
+    <strong class="input-label">Email</strong>
+    <input type="email" ng-model="usuarioE.email" required>
+  </label>
+  <p class="error center-align" ng-show="usuarioE.erro">
+  	{{usuarioE.erro}}
+  </p>
+</div>

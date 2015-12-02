@@ -1,0 +1,35 @@
+<ion-view view-title="Cadastro" cache-view="false">
+  <ion-content class="padding">
+	
+	<form name="formCadastro">
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+		    <strong class="input-label">Nome</strong>
+		    <input type="text" ng-model="novo.nome" placeholder="Nome Completo" required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		    <strong class="input-label">E-Mail</strong>
+		    <input type="email" ng-model="novo.email" placeholder="E-Mail válido" required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		    <strong class="input-label">Senha</strong>
+		    <input type="password" ng-model="novo.senha" placeholder="Mínimo 8 caracteres" required>
+		  </label>
+		  <label class="item item-input item-stacked-label">
+		    <strong class="input-label">Confirmar Senha</strong>
+		    <input type="password" ng-model="novo.confirmar" placeholder="Confirmação de Senha" required>
+		  </label>
+		</div>
+	  <p class="error center-align" ng-show="novo.erro">
+	  	{{novo.erro}}
+	  </p>
+	  <p class="error center-align" ng-show="novo.senha.length >= 8 && novo.confirmar.length >= 8 &&novo.senha != novo.confirmar">
+	  	A senha e confirmação de senha devem ser iguais
+	  </p>
+		<button class="button button-positive button-block" ng-disabled="formCadastro.$invalid || novo.senha.length < 8 || novo.senha != novo.confirmar" ng-click="inserirUsuario(novo)">
+			Cadastrar
+		</button>
+	</form>
+
+  </ion-content>
+</ion-view>

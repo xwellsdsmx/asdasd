@@ -1,0 +1,14 @@
+{
+    "name": "posts",
+    "main": "server.js",
+    "dependencies": {
+        "express": "~4.0.0",
+    	"morgan": "latest",
+        "mongoose": "~3.6.13",
+        "body-parser": "~1.0.1",
+        "sha1": "latest"
+    },
+	"engines": {
+		"node": ">=0.10.0"
+	}
+}

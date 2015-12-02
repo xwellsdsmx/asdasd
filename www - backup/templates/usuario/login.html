@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true" cache-view="false">
+  <ion-content class="back-positive padding" scroll="false">
+  	<div class="col-md-3 col-sm-2"></div>
+  	<div class="col-md-6 col-xs-12 col-sm-8 no-padding">
+	  	<br><br>
+	    <div class="row">
+	   		<div class="center-div col-xs-8 col-sm-10 col-md-12">
+	   			<img src="img/post.png" alt="" width="100px" class="col">
+	   		</div>
+	   	</div>
+
+	   	<form name="formLogin">
+			<div class="list list-inset">
+			  <label class="item item-input">
+			    <input type="email" placeholder="Email" ng-model="usuario.email" required>
+			  </label>
+			  <label class="item item-input">
+			    <input type="password" placeholder="Senha" ng-model="usuario.senha" required>
+			  </label>
+			</div>
+
+			<div class="list">
+				<button class="item button button-positive button-block border-white" ng-click="login(usuario)" ng-disabled="formLogin.$invalid">
+				  Entrar
+				</button>
+				<a class="item button button-block button-clear" href="#/cadastro">Cadastro</a>
+			</div>
+		</form>
+	</div>
+  	<div class="col-md-4 col-sm-2"></div>
+  </ion-content>
+</ion-view>
