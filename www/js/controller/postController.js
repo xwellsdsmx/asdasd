@@ -1,1 +1,237 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1x.1w(\'1y\',[\'$0\',\'$M\',\'$D\',\'$U\',\'y\',\'V\',\'F\',1($0,$M,$D,$U,y,V,F){$U.1z(1A);$0.L={};$M.1d(\'1c/l/4.19\',{0:$0}).7(1(l){$0.G=l});$M.1d(\'1c/l/2.19\',{0:$0}).7(1(l){$0.H=l});$0.$1a(\'G.1f\',1(){f.1e(\'1l\')});$0.$1a(\'H.1f\',1(){f.1e(\'1p\')});$0.1t=1(2){$0.B=1g};$0.1s=1(c){$0.J[c]=!$0.J[c]};$0.h=1(){y.1u().7(1(6){9(6.3.S){8 I=6.3.3;$0.I=I;$0.J=[];1r.1B(I,1(v,i){$0.J.1N(v.d)});$0.B={};$0.$1M(\'1O.1L\')}C{x.w(6.3.3)}},1(u){x.w(u)})};$0.1J=1(2){$0.B={};9(2.r!==1g){9(!2.r.N(/^\\s+|\\s+$/g,"")==\'\'){8 a=V.1K();8 2={1D:a.d,r:2.r};y.2(2).7(1(6){9(6.3.S){$0.h()}C{x.w(6.3.3)}},1(u){x.w(u)})}C{$0.B.15=\'A 18ção 17 2 não 16 1b 1h 1q\'}}C{$0.B.15=\'A 18ção 17 2 não 16 1b 1h 1q\'}};$0.1H=1(){$0.H.O();$0.3=b.j(f.T);$D.E({P:\'<z Y="5" W-Z="3.r"></z>\',11:\'1n 1I\',0:$0,12:[{t:\'13\',k:\'m-10\',p:1(e){$0.3.2=\'\';q $0.3}},{t:\'14\',k:\'m-Q\',p:1(e){$0.3.2=\'\';q $0.3}}]}).7(1(2){9(!2.r.N(/^\\s+|\\s+$/g,"")==\'\'){y.1j(2).7(1(6){$0.h()})}})};$0.1G=1(){$0.H.O();8 2=b.j(f.T);y.1k(2).7(1(6){$0.h()})};$0.1F=1(2){$0.3=2;$D.E({P:\'<z Y="5" W-Z="3.4"></z>\',11:\'1E 1iá1m\',0:$0,12:[{t:\'13\',k:\'m-10\',p:1(e){$0.3.4=\'\';q $0.3}},{t:\'14\',k:\'m-Q\',p:1(e){q $0.3}}]}).7(1(2){8 4={4:2.4,a:b.j(R.X)};9(!2.4.N(/^\\s+|\\s+$/g,"")==\'\'){F.2(4,2).7(1(6){9(6.3.S){$0.h()}C{x.w(6.3.3)}},1(u){x.w(u)})}})};$0.1C=1(4,2){$0.G.O();$0.3=b.j(f.L);$D.E({P:\'<z Y="5" W-Z="3.4.4"></z>\',11:\'1n 1iá1m\',0:$0,12:[{t:\'13\',k:\'m-10\',p:1(e){$0.3.4.4=\'\';q $0.3}},{t:\'14\',k:\'m-Q\',p:1(e){q $0.3}}]}).7(1(6){9(!6.4.4.N(/^\\s+|\\s+$/g,"")==\'\'){8 2={d:6.c};8 4=6.4;F.1j(4,2).7(1(6){$0.h()})}})};$0.1v=1(){$0.G.O();8 4=b.j(f.L);F.1k(4.4,{d:4.c}).7(1(6){$0.h()})};$0.1l=1($K,4,c){8 a=b.j(R.X);9(a.d==4.a.d){f.L=b.1o({c:c,4:4});$0.G.E($K)}};$0.1p=1($K,2){8 a=b.j(R.X);9(a.d==2.a.d){f.T=b.1o(2);$0.H.E($K)}}}]);',62,113,'scope|function|post|data|comentario||res|then|var|if|usuario|JSON|index|_id||sessionStorage||getPosts||parse|type|popover|button|||onTap|return|descricao||text|err||log|console|postF|textarea||postagem|else|ionicPopup|show|comentarioF|popoverC|popoverP|posts|mostrandoComentario|event|editarComentario|ionicPopover|replace|hide|template|positive|localStorage|status|editarPost|ionicNavBarDelegate|usuarioF|ng|loginPost|rows|model|assertive|title|buttons|Cancelar|OK|erro|pode|do|descri|html|on|ficar|templates|fromTemplateUrl|removeItem|hidden|undefined|em|Coment|put|delete|popoverComentario|rio|Editar|stringify|popoverPost|branco|angular|mostrarComentario|novoPost|getAll|deleteComentario|controller|app|postController|showBackButton|false|forEach|putComentario|idUsuario|Novo|postComentario|deletePost|putPost|Post|postPost|getLocal|refreshComplete|broadcast|push|scroll'.split('|'),0,{}))
+app.controller('postController', ['$scope', '$ionicPopover', '$ionicPopup', '$ionicNavBarDelegate', 'postF', 'usuarioF', 'comentarioF', function($scope, $ionicPopover, $ionicPopup, $ionicNavBarDelegate, postF, usuarioF, comentarioF){
+	
+	$ionicNavBarDelegate.showBackButton(false);
+
+	$scope.editarComentario = {};
+
+	$ionicPopover.fromTemplateUrl('templates/popover/comentario.html', {
+	    scope: $scope
+	}).then(function(popover) {
+	    $scope.popoverC = popover;
+	});
+
+	$ionicPopover.fromTemplateUrl('templates/popover/post.html', {
+	    scope: $scope
+	}).then(function(popover) {
+	    $scope.popoverP = popover;
+	});
+
+	$scope.$on('popoverC.hidden', function() {
+	    sessionStorage.removeItem('popoverComentario');
+	});
+
+	$scope.$on('popoverP.hidden', function() {
+	    sessionStorage.removeItem('popoverPost');
+	});
+
+	$scope.novoPost = function(post){
+		$scope.postagem = undefined;
+	};
+
+	$scope.mostrarComentario = function(index){
+		$scope.mostrandoComentario[index] = !$scope.mostrandoComentario[index];
+	};
+
+	$scope.getPosts = function(){
+		postF.getAll().then(function (res){
+			if(res.data.status){
+				var posts = res.data.data;
+				$scope.posts = posts;
+				$scope.mostrandoComentario = [];
+				angular.forEach(posts, function (v, i){
+					$scope.mostrandoComentario.push(v._id);
+				});
+				$scope.postagem = {};
+				$scope.$broadcast('scroll.refreshComplete');
+			}else{
+				console.log(res.data.data);
+			}
+		}, function (err){
+			console.log(err);
+		});
+	};
+
+	$scope.postPost = function(post){
+		$scope.postagem = {};
+
+		if(post.descricao !== undefined){
+			if(!post.descricao.replace(/^\s+|\s+$/g,"") == ''){
+				var usuario = usuarioF.getLocal();
+
+				var post = {
+					idUsuario: usuario._id,
+					descricao: post.descricao
+				};
+
+				postF.post(post).then(function (res){
+					if(res.data.status){
+						$scope.getPosts();
+					}else{
+						console.log(res.data.data);
+					}
+				}, function (err){
+					console.log(err);
+				});
+			}else{
+				$scope.postagem.erro = 'A descrição do post não pode ficar em branco';
+			}
+		}else{
+			$scope.postagem.erro = 'A descrição do post não pode ficar em branco';
+		}
+		
+	};
+
+	$scope.putPost = function(){
+		$scope.popoverP.hide();
+		$scope.data = JSON.parse(sessionStorage.editarPost);
+
+		$ionicPopup.show({
+	    template: '<textarea rows="5" ng-model="data.descricao"></textarea>',
+	    title: 'Editar Post',
+	    scope: $scope,
+	    buttons: [{
+		    text: 'Cancelar',
+		    type: 'button-assertive',
+		    onTap: function(e) {
+		    	$scope.data.post = '';
+		      return $scope.data;
+		    }
+		  }, {
+		    text: 'OK',
+		    type: 'button-positive',
+		    onTap: function(e) {
+		    	$scope.data.post = '';
+		      return $scope.data;
+		    }
+		  }]
+	  }).then(function (post){
+	  	if(!post.descricao.replace(/^\s+|\s+$/g,"") == ''){
+		  	postF.put(post).then(function (res){
+		  		$scope.getPosts();
+		  	});
+		  }
+	  });
+	};
+
+	$scope.deletePost = function(){
+		$scope.popoverP.hide();
+
+		var post = JSON.parse(sessionStorage.editarPost);
+		
+		postF.delete(post).then(function (res){
+			$scope.getPosts();
+		});
+	};
+
+	$scope.postComentario = function(post){
+		$scope.data = post;
+
+		$ionicPopup.show({
+	    template: '<textarea rows="5" ng-model="data.comentario"></textarea>',
+	    title: 'Novo Comentário',
+	    scope: $scope,
+	    buttons: [{
+		    text: 'Cancelar',
+		    type: 'button-assertive',
+		    onTap: function(e) {
+		    	$scope.data.comentario = '';
+		      return $scope.data;
+		    }
+		  }, {
+		    text: 'OK',
+		    type: 'button-positive',
+		    onTap: function(e) {
+		      return $scope.data;
+		    }
+		  }]
+	  }).then(function (post){
+	  	var comentario = {
+	  		comentario: post.comentario,
+	  		usuario: JSON.parse(localStorage.loginPost)
+	  	};
+	  	if(!post.comentario.replace(/^\s+|\s+$/g,"") == ''){
+				comentarioF.post(comentario, post).then(function (res){
+					if(res.data.status){
+						$scope.getPosts();
+					}else{
+						console.log(res.data.data);
+					}
+				}, function (err){
+					console.log(err);
+				});
+			}
+	  });
+	};
+
+	$scope.putComentario = function(comentario, post){
+		$scope.popoverC.hide();	
+
+		$scope.data = JSON.parse(sessionStorage.editarComentario);
+	
+		$ionicPopup.show({
+	    template: '<textarea rows="5" ng-model="data.comentario.comentario"></textarea>',
+	    title: 'Editar Comentário',
+	    scope: $scope,
+	    buttons: [{
+		    text: 'Cancelar',
+		    type: 'button-assertive',
+		    onTap: function(e) {
+		    	$scope.data.comentario.comentario = '';
+		      return $scope.data;
+		    }
+		  }, {
+		    text: 'OK',
+		    type: 'button-positive',
+		    onTap: function(e) {
+		      return $scope.data;
+		    }
+		  }]
+	  }).then(function (res){
+	  	if(!res.comentario.comentario.replace(/^\s+|\s+$/g,"") == ''){
+		  	var post = {
+		  		_id: res.index
+		  	};
+
+		  	var comentario = res.comentario;
+
+		  	comentarioF.put(comentario, post).then(function (res){
+		  		$scope.getPosts();
+		  	});
+		  }
+	  });
+	};
+
+	$scope.deleteComentario = function(){
+		$scope.popoverC.hide();
+
+		var comentario = JSON.parse(sessionStorage.editarComentario);
+		
+		comentarioF.delete(comentario.comentario, {_id: comentario.index}).then(function (res){
+			$scope.getPosts();
+		});
+		
+	};
+
+	$scope.popoverComentario = function($event, comentario, index){
+
+		var usuario = JSON.parse(localStorage.loginPost);
+
+		if(usuario._id == comentario.usuario._id){
+			sessionStorage.editarComentario = JSON.stringify({index: index, comentario: comentario});
+			$scope.popoverC.show($event);
+		}
+		
+	};
+
+	$scope.popoverPost = function($event, post){
+
+		var usuario = JSON.parse(localStorage.loginPost);
+
+		if(usuario._id == post.usuario._id){
+			sessionStorage.editarPost = JSON.stringify(post);
+			$scope.popoverP.show($event);
+		}
+
+	};
+
+}]);

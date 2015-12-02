@@ -1,1 +1,19 @@
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4.a(\'b\',[\'$2\',1($2){3{9:1(0){3 $2.7(4.5+\'/9\',0)},7:1(0){3 $2.7(4.5+\'/0\',0)},6:1(0){3 $2.6(4.5+\'/0/\'+0.8,0)},c:1(0){3 $2.6(4.5+\'/d/\'+0.8,0)},h:1(){3 g.f(e.i)}}}])',19,19,'usuario|function|http|return|app|url|put|post|_id|login|factory|usuarioF|putSenha|senha|localStorage|parse|JSON|getLocal|loginPost'.split('|'),0,{}))
+app.factory('usuarioF', ['$http', function($http){
+	return{
+		login: function(usuario){
+			return $http.post(app.url + '/login', usuario);
+		},
+		post: function(usuario){
+			return $http.post(app.url + '/usuario', usuario);
+		},
+		put: function(usuario){
+			return $http.put(app.url + '/usuario/' + usuario._id, usuario);
+		},
+		putSenha: function(usuario){
+			return $http.put(app.url + '/senha/' + usuario._id, usuario);
+		},
+		getLocal: function(){
+			return JSON.parse(localStorage.loginPost);
+		}
+	};
+}])

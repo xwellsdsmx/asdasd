@@ -1,1 +1,16 @@
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('4.9(\'a\',[\'$1\',2($1){3{b:2(){3 $1.c(4.5+\'/0\')},0:2(0){3 $1.0(4.5+\'/0\',0)},7:2(0){3 $1.7(4.5+\'/0/\'+0.8,0)},6:2(0){3 $1.6(4.5+\'/0/\'+0.8)}}}])',13,13,'post|http|function|return|app|url|delete|put|_id|factory|postF|getAll|get'.split('|'),0,{}))
+app.factory('postF', ['$http', function($http){
+	return {
+		getAll: function(){
+			return $http.get(app.url + '/post');
+		},
+		post: function(post){
+			return $http.post(app.url + '/post', post);
+		},
+		put: function(post){
+			return $http.put(app.url + '/post/' + post._id, post);
+		},
+		delete: function(post){
+			return $http.delete(app.url + '/post/' + post._id);
+		}
+	};
+}])

@@ -1,1 +1,13 @@
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6.a(\'b\',[\'$2\',4($2){5{0:4(1,0){5 $2.0(6.7+\'/0/\'+0.3+\'/1\',1)},8:4(1,0){5 $2.8(6.7+\'/0/\'+0.3+\'/1/\'+1.3,1)},9:4(1,0){5 $2.9(6.7+\'/0/\'+0.3+\'/1/\'+1.3)}}}])',12,12,'post|comentario|http|_id|function|return|app|url|put|delete|factory|comentarioF'.split('|'),0,{}))
+app.factory('comentarioF', ['$http', function($http){
+	return {
+		post: function(comentario, post){
+			return $http.post(app.url + '/post/' + post._id + '/comentario', comentario);
+		},
+		put: function(comentario, post){
+			return $http.put(app.url + '/post/' + post._id + '/comentario/' + comentario._id, comentario);
+		},
+		delete: function(comentario, post){
+			return $http.delete(app.url + '/post/' + post._id + '/comentario/' + comentario._id);
+		}
+	};
+}])

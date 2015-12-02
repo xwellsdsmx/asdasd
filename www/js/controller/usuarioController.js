@@ -1,1 +1,162 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1m.1j(\'18\',[\'$1\',\'$f\',\'$y\',\'$D\',\'l\',3($1,$f,$y,$D,l){$1.1e=3(){$D.1b(i)};$1.0=(a.b!==7)?j.E(a.b):{};$1.1c=3(){a.1d(\'b\');$f.n(\'G\')};$1.G=3(0){l.G(0).k(3(5){4(5.2.H){a.b=j.F(5.2.2);$f.n(\'v\')}p{C(5.2.2)}},3(t){Q.P(t)})};$1.1a=3(0){l.19(0).k(3(5){4(5.2.H){a.b=j.F(5.2.2);$f.n(\'v\')}p{0.9=5.2.2}},3(t){Q.P(t)})};$1.1f=3(){$1.6=j.E(a.b);$y.K({V:\'J/0/I/0.N\',M:\'L-R\',Z:\'14 1g\',1:$1,12:[{w:\'13\',x:\'z-15\',u:3(e){B 7}},{w:\'W\',x:\'z-Y\',u:3(e){11 0=$1.6,m=h,r=h;$1.6.9=7;4(0.m!==7){4(0.m.q(/^\\s+|\\s+$/g,"")!=\'\'){m=i}}4(0.r!==7){4(0.r.q(/^\\s+|\\s+$/g,"")!=\'\'){r=i}}4(!m||!r){e.X();$1.6.9=\'10 U T S O\'}p{B $1.6}}}]}).k(3(0){l.1n(0).k(3(5){4(5.2.H){a.b=j.F(5.2.2);$1.0=5.2.2;$f.n(\'v\')}p{C(5.2.2)}})})};$1.1k=3(){$1.6=j.E(a.b);$y.K({V:\'J/0/I/d.N\',M:\'L-R\',Z:\'14 1i\',1:$1,12:[{w:\'13\',x:\'z-15\',u:3(e){B 7}},{w:\'W\',x:\'z-Y\',u:3(e){11 0=$1.6,d=h,8=h,c=h;$1.6.9=7;4(0.d!==7){4(0.d.q(/^\\s+|\\s+$/g,"")!=\'\'){d=i}}4(0.8!==7){4(0.8.q(/^\\s+|\\s+$/g,"")!=\'\'){8=i}}4(0.c!==7){4(0.c.q(/^\\s+|\\s+$/g,"")!=\'\'){c=i}}4(0.c!==7&&0.8!==7){4(0.c!=0.8){c=h;8=h;$1.6.9=\'A 1lção 16 8 d e 8 d 17 1o 1h\'}}4(!d||!8||!c){e.X();4($1.6.9==\'\'||$1.6.9===7){$1.6.9=\'10 U T S O\'}}p{B $1.6}}}]}).k(3(0){l.1p(0).k(3(5){C(5.2.2);$f.n(\'v\')})})}}]);',62,88,'usuario|scope|data|function|if|res|usuarioE|undefined|nova|erro|localStorage|loginPost|confirmar|senha||state||false|true|JSON|then|usuarioF|nome|go||else|replace|email||err|onTap|posts|text|type|ionicPopup|button||return|alert|ionicNavBarDelegate|parse|stringify|login|status|alterar|templates|show|popup|cssClass|html|incorretamente|log|console|perfil|preenchidos|ou|faltando|templateUrl|OK|preventDefault|positive|title|Campos|var|buttons|Cancelar|Alterar|assertive|de|devem|usuarioController|post|inserirUsuario|showBackButton|sair|removeItem|initPerfil|popupPerfil|Perfil|iguais|Senha|controller|popupSenha|confirma|app|put|ser|putSenha'.split('|'),0,{}))
+app.controller('usuarioController', ['$scope', '$state', '$ionicPopup', '$ionicNavBarDelegate', 'usuarioF', function($scope, $state, $ionicPopup, $ionicNavBarDelegate, usuarioF){
+	
+	$scope.initPerfil = function(){
+		$ionicNavBarDelegate.showBackButton(true);
+	};
+
+	$scope.usuario = (localStorage.loginPost !== undefined) ? JSON.parse(localStorage.loginPost) : {};
+
+	$scope.sair = function(){
+		localStorage.removeItem('loginPost');
+		$state.go('login');
+	};
+
+	$scope.login = function(usuario){
+		usuarioF.login(usuario).then(function (res){
+			if(res.data.status){
+				localStorage.loginPost = JSON.stringify(res.data.data);
+				$state.go('posts');
+			}else{
+				alert(res.data.data);
+			}
+		}, function (err){
+			console.log(err);
+		});
+	};
+
+	$scope.inserirUsuario = function(usuario){
+		usuarioF.post(usuario).then(function (res){
+			if(res.data.status){
+				localStorage.loginPost = JSON.stringify(res.data.data);
+				$state.go('posts');
+			}else{
+				usuario.erro = res.data.data;
+			}
+		}, function (err){
+			console.log(err);
+		});
+	};
+
+	$scope.popupPerfil = function(){
+		$scope.usuarioE = JSON.parse(localStorage.loginPost);
+
+		$ionicPopup.show({
+		    templateUrl: 'templates/usuario/alterar/usuario.html',
+		    cssClass: 'popup-perfil',
+		    title: 'Alterar Perfil',
+		    scope: $scope,
+	    	buttons: [{
+		    text: 'Cancelar',
+		    type: 'button-assertive',
+		    onTap: function(e) {
+		      return undefined;
+		    }
+		}, {
+		    text: 'OK',
+		    type: 'button-positive',
+		    onTap: function(e) {
+		    	var usuario = $scope.usuarioE, nome = false, email = false;
+
+		    	$scope.usuarioE.erro = undefined;
+
+		    	if(usuario.nome !== undefined){
+		    		if(usuario.nome.replace(/^\s+|\s+$/g,"") != ''){
+		    			nome = true;
+		    		}
+		    	}
+
+		    	if(usuario.email !== undefined){
+		    		if(usuario.email.replace(/^\s+|\s+$/g,"") != ''){
+		    			email = true;
+		    		}
+		    	}
+		    	
+		    	if (!nome || !email) {
+		      		e.preventDefault();
+					$scope.usuarioE.erro = 'Campos faltando ou preenchidos incorretamente';
+		      	}else{
+		      		return $scope.usuarioE;
+		      	}		      
+		    }
+		  }]
+		}).then(function (usuario){
+			usuarioF.put(usuario).then(function (res){
+				if(res.data.status){
+					localStorage.loginPost = JSON.stringify(res.data.data);
+					$scope.usuario = res.data.data;
+					$state.go('posts');
+				}else{
+					alert(res.data.data);
+				}
+				
+			});				
+		});
+	};
+
+	$scope.popupSenha = function(){
+		$scope.usuarioE = JSON.parse(localStorage.loginPost);
+
+		$ionicPopup.show({
+		    templateUrl: 'templates/usuario/alterar/senha.html',
+		    cssClass: 'popup-perfil',
+		    title: 'Alterar Senha',
+		    scope: $scope,
+	    	buttons: [{
+		    text: 'Cancelar',
+		    type: 'button-assertive',
+		    onTap: function(e) {
+		      return undefined;
+		    }
+		}, {
+		    text: 'OK',
+		    type: 'button-positive',
+		    onTap: function(e) {
+		    	var usuario = $scope.usuarioE, senha = false, nova = false, confirmar = false;
+
+		    	$scope.usuarioE.erro = undefined;
+
+		    	if(usuario.senha !== undefined){
+		    		if(usuario.senha.replace(/^\s+|\s+$/g,"") != ''){
+		    			senha = true;
+		    		}
+		    	}
+
+		    	if(usuario.nova !== undefined){
+		    		if(usuario.nova.replace(/^\s+|\s+$/g,"") != ''){
+		    			nova = true;
+		    		}
+		    	}
+
+		    	if(usuario.confirmar !== undefined){
+		    		if(usuario.confirmar.replace(/^\s+|\s+$/g,"") != ''){
+		    			confirmar = true;
+		    		}
+		    	}
+
+		    	if(usuario.confirmar !== undefined && usuario.nova !== undefined){
+		    		if(usuario.confirmar != usuario.nova){
+		    			confirmar = false;
+		    			nova = false;
+		    			$scope.usuarioE.erro = 'A confirmação de nova senha e nova senha devem ser iguais';
+		    		}
+		    	}
+		    	
+		    	if (!senha || !nova || !confirmar) {
+		      		e.preventDefault();
+		      		if($scope.usuarioE.erro == '' || $scope.usuarioE.erro === undefined){
+		      			$scope.usuarioE.erro = 'Campos faltando ou preenchidos incorretamente';
+		      		}					
+		      	}else{
+		      		return $scope.usuarioE;
+		      	}		      
+		    }
+		  }]
+		}).then(function (usuario){
+			usuarioF.putSenha(usuario).then(function (res){
+				alert(res.data.data);
+				$state.go('posts');
+			});		
+		});
+	};
+
+}]);
